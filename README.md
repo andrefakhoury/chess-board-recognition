@@ -30,7 +30,7 @@ Then, we utilise the findContours method from OpenCV to find the coordinates of 
 #### 3. Locate the chessboard
 With the contours extracted and minimized to a simpler shape, we can try to locate all the squares of the image - and then, it's expected that the chessboard is a square with a lot of squares inside.
 
-#### 4. Crop the imae to fit the board
+#### 4. Crop the image to fit the board
 With the board correctly located, we can use its corners to delimit the image sides. It helps to ignore some extra noise and useless information that may exist outside the board, so the next step can be done easier.
 
 #### 5. Analyse the pieces and their respective positions
