@@ -13,34 +13,34 @@ The main objective of this project is to recognise a chess position using a imag
 
 ## Input dataset
 
-The dataset is a mix of already existent photos from [online repositories (thanks, guys!)](https://github.com/samryan18/chess-dataset) and new ones taken by us, like screenshot from online chess tools (from [chess.com](https://chess.com) and [lichess.org](https://lichess.org)) and photos from a physical chess board and pieces. They consist of a upper view of a chess board, and the filenames are the FEN of the current position. Here is an example of a picture taken by us:
+The dataset is a mix of already existent photos from [online repositories (thanks, guys!)](https://github.com/samryan18/chess-dataset) and new ones taken by us, such as screenshots from online chess tools (from [chess.com](https://chess.com) and [lichess.org](https://lichess.org)) and photos of a physical chessboard and chess pieces. They consist of a upper view of a chessboard, and the filenames are the FEN of the current position. Here is an example of a picture taken by us:
 
 <center>
 <img src="data/my-data/8-6P1-8-7r-2k5-R7-2p2K2-8.png" width="300px" alt="Chess-board example">
 </center>
 
-The filename of this image is `8-6P1-8-7r-2k5-R7-2p2K2-8.png`, which corresponds to the FEN of the current position. Note that the slashes are replaced to hyphens, as slashes are not allowed in filenames. Also, there is no information about whose turn is it (white or black to play) and the final score of the match (because there is no way of discovering it just looking at the image).
+The filename of this image is `8-6P1-8-7r-2k5-R7-2p2K2-8.png`, which corresponds to the FEN of the current position. Note that the slashes are replaced to hyphens, as slashes are not allowed in filenames. Also, there is no information about whose turn is it (white or black to play) and the final score of the match (because there is no way of discovering it by just looking at the image).
 
 ## Description of methods used
 
-The image preprocessing is done using OpenCV and Numpy. Basically, the pipeline done in this project is:
+The image preprocessing is done using OpenCV and Numpy. Basically, the pipeline for this project is:
 
 #### 1. Read the image
 First of all, the image is read (using the library imageio), and then converted to grayscale.
 
 #### 2. Process image to reduce noise
-Now, the image receives some processing: a Gaussian Blur to reduce the noise and a Canny method to detect the edges of the figure. After that, a morphological operation of Dilation is done to fill some gaps on the edges.
+Now, some transformations are applied to the image, first a Gaussian Blur to reduce the noise and then the Canny method is used to detect the edges of the figure. After that, a morphological operation of Dilation is done to fill some gaps on the edges.
 
-Then, we utilise the findContours method from OpenCV to find the coordinates of the image borders. Now, as the chessboard can be seen as a regular polygon, we apply the approxPolyDP to approximate every contour to another closed shape, consisting of a smaller number of vertices.
+Then, we utilize the findContours method from OpenCV to find the coordinates of the image borders. Now, as the chessboard can be seen as a regular polygon, we apply the approxPolyDP to approximate every contour to another closed shape, consisting of a smaller number of vertices.
 
 #### 3. Locate the chessboard
-With the contours extracted and minimized to a simpler shape, we can try to locate all the squares of the image - and then, it's expected that the chessboard is a square with a lot of squares inside.
+With the contours extracted and minimized to a simpler shape, we can try to locate all the squares of the image - and then, it's expected that the chessboard is a  large square with several squares inside.
 
 #### 4. Crop the image to fit the board
 With the board correctly located, we can use its corners to delimit the image sides. It helps to ignore some extra noise and useless information that may exist outside the board, so the next step can be done easier.
 
 #### 5. Analyse the pieces and their respective positions
-In this step, we use a convolutional neural network to analyse the pieces on each cell of the board. It's not done (yet). With the position of each piece, we just need to generate the FEN of the position.
+In this step, we use a convolutional neural network to analyse the pieces on each cell of the board. It's not done (yet). With the position of each piece, we just need to compute the FEN of the position.
 
 Some processes of the pipeline can be seen in the following image:
 
