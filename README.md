@@ -9,11 +9,17 @@ Recognition of a chess board and pieces using image processing techniques such a
 
 ## Main objective
 
-The main objective of this project is to recognise a chess position using a image of a chess board as input, utilising some techniques of Digital Image Processing and a Convolutional Neural Network. The chess position will be represented using the Forsyth-Edwards Notation (FEN).
+The main objective of this project is to recognise a chess position using a image of a chess board as input, utilising some techniques of Digital Image Processing and a Convolutional Neural Network. The chess position will be represented using the [Forsyth-Edwards Notation (FEN)](https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation).
 
 ## Input dataset
 
-The dataset is a mix of already existent photos from [online repositories](github.com/samryan18/chess-dataset) and new ones taken by us, like screenshot from online chess tools (from [chess.com](chess.com) and [lichess.org](lichess.org)) and photos from a physical chess board and pieces. They consist of a upper view of a chess board, and the filenames are the FEN of the current position.
+The dataset is a mix of already existent photos from [online repositories (thanks, guys!)](https://github.com/samryan18/chess-dataset) and new ones taken by us, like screenshot from online chess tools (from [chess.com](https://chess.com) and [lichess.org](https://lichess.org)) and photos from a physical chess board and pieces. They consist of a upper view of a chess board, and the filenames are the FEN of the current position. Here is an example of a picture taken by us:
+
+<center>
+<img src="data/my-data/8-6P1-8-7r-2k5-R7-2p2K2-8.png" width="300px" alt="Chess-board example">
+</center>
+
+The filename of this image is `8-6P1-8-7r-2k5-R7-2p2K2-8.png`, which corresponds to the FEN of the current position. Note that the slashes are replaced to hyphens, as slashes are not allowed in filenames. Also, there is no information about whose turn is it (white or black to play) and the final score of the match (because there is no way of discovering it just looking at the image).
 
 ## Description of methods used
 
@@ -34,4 +40,8 @@ With the contours extracted and minimized to a simpler shape, we can try to loca
 With the board correctly located, we can use its corners to delimit the image sides. It helps to ignore some extra noise and useless information that may exist outside the board, so the next step can be done easier.
 
 #### 5. Analyse the pieces and their respective positions
-In this step, we use a convolutional neural network to analyse the pieces on each cell of the board. It's not done (yet).
+In this step, we use a convolutional neural network to analyse the pieces on each cell of the board. It's not done (yet). With the position of each piece, we just need to generate the FEN of the position.
+
+Some processes of the pipeline can be seen in the following image:
+
+![Example](data/extra/example.png)
