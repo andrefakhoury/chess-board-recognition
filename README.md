@@ -1,6 +1,6 @@
 # Chess Board Recognition
 
-Recognition of a chess board and pieces using image processing techniques such as enhancement, filtering and segmentation. Final project for Digital Image Processing course at USP - São Carlos. Our aim is to process the images and reconstruct the FEN (Forsyth-Edwards Notation) of the current match represented on the board.
+Recognition of a chess board and pieces using image processing techniques such as enhancement, filtering and segmentation. Final project for Digital Image Processing course at USP - São Carlos. Our aim is to process the images and identify the pieces of the current match represented on the board.
 
 ## Contributors
 
@@ -19,17 +19,17 @@ The dataset is a mix of existent photos from [online repositories (thanks, guys!
 <img src="data/my-data/8-6P1-8-7r-2k5-R7-2p2K2-8.png" width="300px" alt="Chess-board example">
 </center>
 
-The filename of this image is `8-6P1-8-7r-2k5-R7-2p2K2-8.png`, which corresponds to the FEN of the current position. Note that the slashes are replaced to hyphens, as slashes are not allowed in filenames. Also, there is no information about whose turn is it (white or black to play) and the final score of the match (because there is no way of discovering it by just looking at the image).
+The filename of this image is `8-6P1-8-7r-2k5-R7-2p2K2-8.png`, which corresponds to the FEN of the current position. Note that the slashes are replaced to hyphens, as slashes are not allowed in filenames. Also, there is no information about whose turn it is (white or black to play) and the final score of the match (because there is no way of discovering it by just looking at the image).
 
 ## Description of methods used
 
 The image preprocessing is done using OpenCV and Numpy. Basically, the pipeline for this project is:
 
 #### 1. Read the image
-First of all, the image is read (using the library imageio), and then converted to grayscale.
+First of all, the image is read (using the library imageio).
 
 #### 2. Process image to reduce noise
-Now, some transformations are applied to the image, first a Gaussian Blur to reduce the noise and then the Canny method is used to detect the edges of the figure. After that, a morphological operation of Dilation is done to fill some gaps on the edges.
+Now, some transformations are applied to the image, it is converted to grayscale, a Gaussian Blur to reduce the noise is applied and then the Canny method is used to detect the edges of the figure. After that, a morphological operation of Dilation is done to fill some gaps on the edges.
 
 Then, we utilize the findContours method from OpenCV to find the coordinates of the image borders. Now, as the chessboard can be seen as a regular polygon, we apply the approxPolyDP to approximate every contour to another closed shape, consisting of a smaller number of vertices.
 
@@ -44,4 +44,6 @@ Some processes of the pipeline can be seen in the following image:
 ![Example](data/extra/example.png)
 
 #### 5. Analyse the pieces and their respective positions
-In this step, we use a convolutional neural network to analyse the pieces on each cell of the board. It's not done (yet). With the position of each piece, we just need to compute the FEN of the position.
+In this step, we use a convolutional neural network to analyse the pieces on each cell of the board. The network takes as input a 512x512 image of the cropped chessboard and outputs the identified piece of each postion. The network identifies the piece type (king, queen, rook, knight, bishop, pawn or empty) with no color information (white or black).
+
+![Result](result.png)
