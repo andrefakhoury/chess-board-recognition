@@ -46,4 +46,6 @@ Some processes of the pipeline can be seen in the following image:
 #### 5. Analyse the pieces and their respective positions
 In this step, we use a convolutional neural network to analyse the pieces on each cell of the board. The network takes as input a 512x512 image of the cropped chessboard and outputs the identified piece of each postion. The network identifies the piece type (king, queen, rook, knight, bishop, pawn or empty) with no color information (white or black).
 
+The image below represents our trained model predictions, blue means correct, red means error and yellow means partially correct (the model identifies that the position is non empty but the identified type is wrong). The value above each position is the score, each correct position is worth one point and each partially correct is worth half a point.
+
 ![Result](result.png)
