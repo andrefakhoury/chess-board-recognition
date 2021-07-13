@@ -39,9 +39,9 @@ With the contours extracted and minimized to a simpler shape, we can try to loca
 #### 4. Crop the image to fit the board
 With the board correctly located, we can use its corners to delimit the image sides. It helps to ignore some extra noise and useless information that may exist outside the board, so the next step can be done easier.
 
-#### 5. Analyse the pieces and their respective positions
-In this step, we use a convolutional neural network to analyse the pieces on each cell of the board. It's not done (yet). With the position of each piece, we just need to compute the FEN of the position.
-
 Some processes of the pipeline can be seen in the following image:
 
 ![Example](data/extra/example.png)
+
+#### 5. Analyse the pieces and their respective positions
+In this step, we use a convolutional neural network to analyse the pieces on each cell of the board. It's not done (yet). With the position of each piece, we just need to compute the FEN of the position.
