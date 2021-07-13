@@ -13,7 +13,7 @@ The main objective of this project is to recognise a chess position using a imag
 
 ## Input dataset
 
-The dataset is a mix of already existent photos from [online repositories (thanks, guys!)](https://github.com/samryan18/chess-dataset) and new ones taken by us, such as screenshots from online chess tools (from [chess.com](https://chess.com) and [lichess.org](https://lichess.org)) and photos of a physical chessboard and chess pieces. They consist of a upper view of a chessboard, and the filenames are the FEN of the current position. Here is an example of a picture taken by us:
+The dataset is a mix of existent photos from [online repositories (thanks, guys!)](https://github.com/samryan18/chess-dataset) and photos of a physical chessboard and chess pieces taken by us. They consist of a upper view of a chessboard, and the filenames are the FEN of the current position. Here is an example of a picture taken by us:
 
 <center>
 <img src="data/my-data/8-6P1-8-7r-2k5-R7-2p2K2-8.png" width="300px" alt="Chess-board example">
