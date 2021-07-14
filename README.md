@@ -23,7 +23,7 @@ The filename of this image is `8-6P1-8-7r-2k5-R7-2p2K2-8.png`, which corresponds
 
 ## Description of methods used
 
-The image preprocessing is done using OpenCV and Numpy. Basically, the pipeline for this project is:
+The image preprocessing is done using OpenCV and Numpy. The source code is available in the jupyter notebook `notebook.ipynb`. Basically, the pipeline for this project is:
 
 #### 1. Read the image
 First of all, the image is read (using the library imageio).
@@ -48,4 +48,4 @@ In this step, we use a convolutional neural network to analyse the pieces on eac
 
 The image below represents our trained model predictions, blue means correct, red means error and yellow means partially correct (the model identifies that the position is non empty but the identified type is wrong). The value above each position is the score, each correct position is worth one point and each partially correct is worth half a point.
 
-![Result](result.png)
+![Result](data/extra/result.png)
