@@ -51,3 +51,9 @@ In this step, we use a convolutional neural network to analyse the pieces on eac
 The image below represents our trained model predictions, blue means correct, red means error and yellow means partially correct (the model identifies that the position is non empty but the identified type is wrong). The value above each position is the score, each correct position is worth one point and each partially correct is worth half a point.
 
 ![Result](data/extra/result.png)
+
+## Analysis of the results
+
+Our preprocessing pipeline was able to detect the chessboard in most of the input images from the dataset, it was correctly detected in about 480 out of 500 images (96% accuracy). For the boards that failed to be detected, our pipeline was unable to get proper contours for the input image. In some of those cases, the board contour merged with a nearby one, causing it to not form a four sided polygon.
+
+Our CNN scored a total 752 out of 1024 in the 16 test images (about 73%). Most pieces were correctly identified, however the network outputs several non-existent pieces. This could by a result of the loss function used, which attributes a smaller weight to the empty positions. 
