@@ -4,8 +4,10 @@ Recognition of a chess board and pieces using image processing techniques such a
 
 ## Contributors
 
-- André Fakhoury
-- Gustavo Soares
+- [André L. M. Fakhoury](https://github.com/andrefakhoury): finding the dataset and developing part of the source code;
+- [Gustavo V. V. Soares](https://github.com/gsoares1928): developing the source code and designing the CNN.
+
+Overall, we had the same roles, and developed this project at the same time as a team.
 
 ## Main objective
 
